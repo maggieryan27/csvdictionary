@@ -1,0 +1,40 @@
+f=open("cars.csv","r")
+# initialize variables
+end_of_file = False
+nmbr_of_lines = 0
+
+while not(end_of_file):
+    line = f.readline()                    # read a single line from the file
+    if not(line):                          # if 'line' is empty - then we know
+        end_of_file = True                 # the end of file has been reached
+    else:
+        nmbr_of_lines = nmbr_of_lines + 1  # increment the line count
+f.close()
+
+print ("There are "+str(nmbr_of_lines)+" lines in the csv")
+n = int(input("Enter an inclusive number, 1 to "+str(nmbr_of_lines-2)+": "))
+
+# Enter your code beginning on line 20
+f = open("cars.csv","r")
+n = int(n)
+lines = f.readlines()                   
+f.close()
+
+print(lines[n])
+header = lines[0]
+line_choice = lines[n]
+row = line_choice.strip().split(",")
+
+model = row[0]
+country = "the US" if row[8] == "US" else row[8]
+f.close()
+
+hp = float(row[4])
+kw = (hp*746/1000)
+
+print("\nHEADER")
+print(header)
+print("LINE",n)
+print(row)
+
+print("The",model,"made in",country,"generates",hp,"HP, or",kw,"KW of power.")
